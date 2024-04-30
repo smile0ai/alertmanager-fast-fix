@@ -82,8 +82,8 @@ func (n *Notifier) Notify(ctx context.Context, alert ...*types.Alert) (bool, err
 	if truncated {
 		level.Warn(n.logger).Log("msg", "Truncated message", "alert", key, "max_runes", maxMessageLenRunes)
 	}
-
 	message, err := n.client.Send(telebot.ChatID(n.conf.ChatID), messageText, &telebot.SendOptions{
+                ReplyTo:               &telebot.Message{ID: int(n.conf.MessageThreadId)},
 		DisableNotification:   n.conf.DisableNotifications,
 		DisableWebPagePreview: true,
 	})

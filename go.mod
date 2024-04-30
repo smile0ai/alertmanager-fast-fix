@@ -1,4 +1,4 @@
-module github.com/prometheus/alertmanager
+module github.com/smile0ai/alertmanager-fast-fix
 
 go 1.18
 
