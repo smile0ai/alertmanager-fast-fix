@@ -1120,6 +1120,9 @@ API](http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages).
 # ID of the chat where to send the messages.
 [ chat_id: <int> ]
 
+# Optional ID of the message thread where to send the messages.
+[ message_thread_id: <int> ]
+
 # Message template
 [ message: <tmpl_string> default = '{{ template "telegram.default.message" .}}' ]
 
