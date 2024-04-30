@@ -83,9 +83,9 @@ func (n *Notifier) Notify(ctx context.Context, alert ...*types.Alert) (bool, err
 		level.Warn(n.logger).Log("msg", "Truncated message", "alert", key, "max_runes", maxMessageLenRunes)
 	}
 	message, err := n.client.Send(telebot.ChatID(n.conf.ChatID), messageText, &telebot.SendOptions{
-                ReplyTo:               &telebot.Message{ID: int(n.conf.MessageThreadId)},
 		DisableNotification:   n.conf.DisableNotifications,
 		DisableWebPagePreview: true,
+                ThreadID:              n.conf.MessageThreadID,
 	})
 	if err != nil {
 		return true, err
